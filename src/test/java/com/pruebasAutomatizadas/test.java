@@ -104,8 +104,8 @@ public class test {
 		Thread.sleep(3000);
 		
 	}
-	
-public void pruebaFalloRegistroPass() throws InterruptedException {
+	@Test
+	public void pruebaFalloRegistroPass() throws InterruptedException {
 		
 		driver.findElement(registerLocator).click();
 		Thread.sleep(1000);
