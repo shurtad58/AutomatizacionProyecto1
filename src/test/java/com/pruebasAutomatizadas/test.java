@@ -46,7 +46,7 @@ public class test {
 		Thread.sleep(1000);
 		driver.findElement(usernameLocator).sendKeys("stiven");
 		Thread.sleep(1000);
-		driver.findElement(emailLocator).sendKeys("stiven58hurtado@hotmail.com");
+		driver.findElement(emailLocator).sendKeys("stiven58hur@hotmail.com");
 		Thread.sleep(1000);
 		driver.findElement(passwordLocator).sendKeys("1234");
 		Thread.sleep(1000);
