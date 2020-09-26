@@ -26,6 +26,8 @@ public class test {
 	By confirmpasswordLocator = By.name("confirm_password");
 	By signupBtnLocator = By.xpath("/html/body/main/div/div/div/div[2]/form/button");
 	By registeredSuccess = By.xpath("/html/body/main/div[1]");
+	By messageErrorPass = By.xpath("/html/body/main/div[2]");
+	By messageErrorPassEqual = By.xpath("/html/body/main/div[1]");
 	
 	
 	
@@ -80,11 +82,60 @@ public class test {
 		*/
 	}
 	
+	
+	@Test
+	public void pruebaFalloRegistro() throws InterruptedException {
+		
+		driver.findElement(registerLocator).click();
+		Thread.sleep(1000);
+		driver.findElement(usernameLocator).sendKeys("stiven");
+		Thread.sleep(1000);
+		driver.findElement(emailLocator).sendKeys("desarro@llohotmail.com");
+		Thread.sleep(1000);
+		driver.findElement(passwordLocator).sendKeys("123");
+		Thread.sleep(1000);
+		driver.findElement(confirmpasswordLocator).sendKeys("123");
+		Thread.sleep(1000);
+		
+		driver.findElement(signupBtnLocator).click();
+		WebDriverWait wait= new WebDriverWait(driver, 5);
+		wait.until(ExpectedConditions.presenceOfElementLocated(messageErrorPass));
+		assertTrue("The message is not present", driver.findElement(messageErrorPass).isDisplayed());
+		Thread.sleep(3000);
+		
+	}
+	
+public void pruebaFalloRegistroPass() throws InterruptedException {
+		
+		driver.findElement(registerLocator).click();
+		Thread.sleep(1000);
+		driver.findElement(usernameLocator).sendKeys("stiven");
+		Thread.sleep(1000);
+		driver.findElement(emailLocator).sendKeys("desarrolloo@hotmail.com");
+		Thread.sleep(1000);
+		driver.findElement(passwordLocator).sendKeys("123456");
+		Thread.sleep(1000);
+		driver.findElement(confirmpasswordLocator).sendKeys("1234567");
+		Thread.sleep(1000);
+		
+		driver.findElement(signupBtnLocator).click();
+		WebDriverWait wait= new WebDriverWait(driver, 5);
+		wait.until(ExpectedConditions.presenceOfElementLocated(messageErrorPassEqual));
+		assertTrue("The message is not present", driver.findElement(messageErrorPassEqual).isDisplayed());
+		Thread.sleep(3000);
+		
+	}
+	
+	
 	@After
 	public void tearDown() {
 		
 		driver.quit();
 	}
+	
+	
+		
+	
 	
 	
 	
